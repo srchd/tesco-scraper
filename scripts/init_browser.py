@@ -2,6 +2,7 @@ import os
 
 from .os_and_browser_selector import select_web_browser
 from .exceptions.browser_exception import BrowserNotFoundException
+from .exceptions.driver_exception import DriverIsNoneException
 
 from selenium import webdriver
 from selenium.webdriver.firefox.options import Options as FireFoxOptions
@@ -16,7 +17,7 @@ def init_browser():
     elif 'firefox' in select_web_browser().lower():
         browser_options = FireFoxOptions()
     else:
-        raise BrowserNotFoundException('Invalid Browser!')
+        raise BrowserNotFoundException('[Error] Invalid Browser!')
 
     browser_options.add_argument('--ignore-certificate-errors')
     browser_options.add_argument('--ignore-ssl-errors')
@@ -42,10 +43,9 @@ def init_browser():
     if 'edge' in select_web_browser().lower():
         driver = Edge(EdgeChromiumDriverManager().install(), options=browser_options)
     elif 'firefox' in select_web_browser().lower():
-        _ = GeckoDriverManager().install()
         driver = webdriver.Firefox(executable_path=GeckoDriverManager().install(), options=browser_options)
     else:
-        raise BrowserNotFoundException('Invalid Browser!')
+        raise BrowserNotFoundException('[Error] Invalid Browser!')
 
     window_size = driver.get_window_size()
     if window_size['width'] < 1200:
@@ -57,5 +57,8 @@ def init_browser():
         print("Resized window height")
         # logging.info("Resized window height")
         driver.set_window_size(window_size['width'], 850)
+
+    if not driver:
+        raise DriverIsNoneException('[Error] Driver is None!')
 
     return driver
