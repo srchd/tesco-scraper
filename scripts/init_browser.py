@@ -6,8 +6,8 @@ from .exceptions.driver_exception import DriverIsNoneException
 
 from selenium import webdriver
 from selenium.webdriver.firefox.options import Options as FireFoxOptions
-from msedge.selenium_tools import Edge, EdgeOptions
-from webdriver_manager.microsoft import EdgeChromiumDriverManager
+# from msedge.selenium_tools import Edge, EdgeOptions
+# from webdriver_manager.microsoft import EdgeChromiumDriverManager
 from webdriver_manager.firefox import GeckoDriverManager
 
 def init_browser():
@@ -36,7 +36,7 @@ def init_browser():
     browser_options.add_argument('--no-first-run')
 
     # browser_options.add_experimental_option('excludeSwitches', ['enable-automation'])
-    # browser_options.add_argument('--headless')
+    browser_options.add_argument('--headless')
     browser_options.add_argument('--disable')
 
     driver = None
