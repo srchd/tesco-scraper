@@ -33,12 +33,12 @@ dependencies:
   - xz=5.2.6
   - zlib=1.2.12
   - pip:
-    - _openmp_mutex=5.1
-    - libstdcxx-ng=11.2.0
-    - libgcc-ng=11.2.0
-    - ncurses=6.3
-    - ld_impl_linux-64=2.38
-    - readline=8.1.2
-    - libgomp=11.2.0
+    - _openmp_mutex==5.1
+    - libstdcxx-ng==11.2.0
+    - libgcc-ng==11.2.0
+    - ncurses==6.3
+    - ld_impl_linux-64==2.38
+    - readline==8.1.2
+    - libgomp==11.2.0
 prefix: /home/srchd/anaconda3/envs/tesco-scrap
 
