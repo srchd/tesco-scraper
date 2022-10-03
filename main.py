@@ -20,8 +20,8 @@ def main():
 
     html_ = driver.page_source
 
-    with open('asd.txt', 'w') as f:
-        f.write(html_)
+    # with open('asd.txt', 'w') as f:
+    #     f.write(html_)
 
     menu_ul = wait_until_found(driver, 'menu-superdepartment', By.CLASS_NAME, 20)
     # categories = wait_until_found(driver, 'div.menu-tree__inner > ul', 30)
@@ -33,7 +33,6 @@ def main():
         category = category.strip('\n')
         print(category)
 
-    time.sleep(5)
     driver.close()
 
     return
